@@ -11,18 +11,22 @@ test('D.year', () => {
 })
 
 test('D.month', () => {
-    expect(bDay.month).toBe('January')
+    expect(bDay.month).toBe(months[0])
 })
 
 test('D.mon', () => {
-    expect(bDay.mon).toBe('Jan')
+    expect(bDay.mon).toBe(mons[0])
 })
 
 test('D.day', () => {
-    expect(bDay.day).toBe('Friday')
+    expect(d.day).toBe(days[today.getDay()])
 })
 
 test('D.dy', () => {
-    expect(bDay.dy).toBe('Fri')
+    expect(d.dy).toBe(dys[today.getDay()])
+})
+
+test('D.date', () => {
+    expect(d.date).toBe(today.getDate())
 })
 
