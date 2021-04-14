@@ -30,3 +30,14 @@ test('D.date', () => {
     expect(d.date).toBe(today.getDate())
 })
 
+test('D.hour', () => {
+    expect(d.hour).toBe(today.getHours())
+})
+
+test('D.min', () => {
+    expect(d.min).toBe(today.getMinutes())
+})
+
+test('D.sec', () => {
+    expect(d.sec).toBe(today.getSeconds())
+})

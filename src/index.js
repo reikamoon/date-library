@@ -34,6 +34,18 @@ class D {
         return this._date.getDate()
     }
 
+    get hour() {
+        return this._date.getHours()
+    }
+
+    get min() {
+        return this._date.getMinutes()
+    }
+
+    get sec() {
+        return this._date.getSeconds()
+    }
+
 
 
 }
