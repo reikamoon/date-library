@@ -18,3 +18,11 @@ test('D.mon', () => {
     expect(bDay.mon).toBe('Jan')
 })
 
+test('D.day', () => {
+    expect(bDay.day).toBe('Friday')
+})
+
+test('D.dy', () => {
+    expect(bDay.dy).toBe('Fri')
+})
+
