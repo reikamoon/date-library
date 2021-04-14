@@ -46,9 +46,57 @@ class D {
         return this._date.getSeconds()
     }
 
+     format(mask = 'M D Y') {
+        const dict = {
+            "Y": this.year,
+            "y": this.yr,
+            "M": this.month,
+            "m": this.mon,
+            "D": this._date.getDate(),
+            "d": this.date,
+            "H": this._date.getHours(),
+            "h": this._date.getHours(),
+            "I": this._date.getMinutes(),
+            "i": this.mins,
+            "S": this._date.getSeconds(),
+            "s": this.secs,
+        }
 
+        let output = ''
+        for (let i = 0; i < mask.length; i++) {
+            if (dict[mask[i]] === undefined) {
+                output += mask[i]
+            } else {
+                output += dict[mask[i]]
+            }
+        }
+        return output
+    }
 
-}
+    when() {
+        const now = new D();
+        const ydiff = this.year - now.year
+        const mdiff = this._date.getMonth() - now._date.getMonth() + ydiff * 12;
+        const ddiff = this._date - now._date
+        
+        if (mdiff > 11) {
+            return `${ydiff} year(s) from now`;
+          } else if (mdiff > 0) {
+            return `${mdiff} month(s) from now`;
+          } else if (mdiff < 0) {
+            return `${mdiff} month(s) ago`;
+          } else if (mdiff > 0) {
+            return `${ddiff} day(s) ago`;
+          } else if (mdiff < 0) {
+            return `${ddiff} day(s) from now`;
+          } else {
+            return 'today';
+          }
+        }
+    }
 
 
 module.exports = D
+
+day = new D(2020, 3, 14).when()
+console.log(day)
