@@ -76,27 +76,24 @@ class D {
     when() {
         const now = new D();
         const ydiff = this.year - now.year
+        var absoluteyear = Math.abs(ydiff)
         const mdiff = this._date.getMonth() - now._date.getMonth() + ydiff * 12;
+        var absolutemonth = Math.abs(mdiff)
         const ddiff = this._date - now._date
-        
-        if (mdiff > 11) {
-            return `${ydiff} year(s) from now`;
-          } else if (mdiff > 0) {
-            return `${mdiff} month(s) from now`;
-          } else if (mdiff < 0) {
-            return `${mdiff} month(s) ago`;
-          } else if (mdiff > 0) {
-            return `${ddiff} day(s) ago`;
-          } else if (mdiff < 0) {
-            return `${ddiff} day(s) from now`;
-          } else {
-            return 'today';
-          }
+        var absoluteday = Math.abs(ddiff)
+
+        if(ydiff <  0) {
+            return `${absoluteyear} years ago`;
+        } else if (ydiff === 1){
+            return `${absoluteyear} year ago`;
+        } else if (ydiff > 0) {
+            return `${absoluteyear} years from now`;         
         }
     }
+}
 
 
 module.exports = D
 
-day = new D(2020, 3, 14).when()
+day = new D(1590, 0, 12).when()
 console.log(day)
