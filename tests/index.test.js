@@ -41,3 +41,11 @@ test('D.min', () => {
 test('D.sec', () => {
     expect(d.sec).toBe(today.getSeconds())
 })
+
+test('format', () => {
+    expect(d.format(""))
+})
+
+test('when', () => {
+    expect(d.when(""))
+})
