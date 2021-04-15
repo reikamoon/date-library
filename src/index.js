@@ -74,26 +74,58 @@ class D {
     }
 
     when() {
+        const msg = []; /// Years, Months, Days
         const now = new D();
-        const ydiff = this.year - now.year
-        var absoluteyear = Math.abs(ydiff)
-        const mdiff = this._date.getMonth() - now._date.getMonth() + ydiff * 12;
-        var absolutemonth = Math.abs(mdiff)
-        const ddiff = this._date - now._date
-        var absoluteday = Math.abs(ddiff)
+        const ydiff = (this.year - now.year);
+        var absoluteyear = Math.abs(ydiff);
+        const mdiff = Math.abs(this._date.getMonth() - now._date.getMonth() + ydiff);
+        var absolutemonth = Math.abs(mdiff);
+        const ddiff = Math.abs(this._date - now._date)
+        var absoluteday = Math.abs(ddiff);
+        var roundeddays = Math.round(absoluteday);
 
-        if(ydiff <  0) {
-            return `${absoluteyear} years ago`;
-        } else if (ydiff === 1){
-            return `${absoluteyear} year ago`;
-        } else if (ydiff > 0) {
-            return `${absoluteyear} years from now`;         
+        if (ydiff != 0) {
+            if (ydiff === 1) {
+                msg.push(`Next year.`);
+            } else if(ydiff === -1) {
+                msg.push(`Last year.`)
+            } else if(ydiff < 0) {
+                msg.push(`${absoluteyear} years ago.`);
+            } else if(ydiff > 0) {
+                msg.push(`${absoluteyear} years from now.`);
+         }
+
+        if (mdiff != 0) {
+            if (mdiff === 1) {
+                msg.push(`Next month.`);
+            } else if(mdiff === -1) {
+                msg.push(`Last month.`)
+            } else if(mdiff < 0) {
+                msg.push(`${absolutemonth} months ago.`)
+            } else if(mdiff > 0) {
+                msg.push(`${absolutemonth} months from now.`)
+            }
         }
+
+        if (ddiff != 0) {
+            if (ddiff === 1) {
+                msg.push(`A day from now, tomorrow.`);
+            } else if(ddiff === -1) {
+                msg.push(`A day before, yesterday.`);
+            } else if(ddiff < 0) {
+                msg.push(`${absoluteday} days ago.`)
+            } else if(ddiff > 0) {
+                msg.push(`${absoluteday} days from now.`)
+            }
+        }
+        
+        return msg
     }
+}
 }
 
 
 module.exports = D
 
-day = new D(1590, 0, 12).when()
+day = new D(2020, 3, 14).when()
 console.log(day)
