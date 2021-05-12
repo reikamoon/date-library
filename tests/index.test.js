@@ -11,7 +11,7 @@ test('D.year', () => {
 })
 
 test('D.month', () => {
-    expect(bDay.month).toBe(months[0])
+    expect(d.month).toBe(months[3])
 })
 
 test('D.mon', () => {
